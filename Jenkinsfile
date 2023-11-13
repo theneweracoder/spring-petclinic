@@ -6,21 +6,28 @@ pipeline {
         }
     }
     stages {
+        stage("checkout from github"){
+            steps{
+                git branch: 'main',
+                url:'https://github.com/theneweracoder/spring-petclinic.git'
+                echo 'pulled from github successfully'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -Dcheckstyle.skip -DskipTests clean package'
             }
         }
-//        stage('Test') {
-//            steps {
-//                sh 'mvn test'
-//            }
-//            post {
-//                always {
-//                    junit 'target/surefire-reports/*.xml'
-//               }
-//            }
-//        }
+       stage('Test') {
+           steps {
+               sh 'mvn test'
+           }
+           post {
+               always {
+                   junit 'target/surefire-reports/*.xml'
+              }
+           }
+       }
 //        stage('Deliver') {
 //            steps {
 //                sh './jenkins/scripts/deliver.sh'
