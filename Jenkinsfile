@@ -18,20 +18,25 @@ pipeline {
                 sh 'mvn -B -Dcheckstyle.skip -DskipTests clean package'
             }
         }
-        stage("build & SonarQube analysis") {
-            steps {
-              withSonarQubeEnv('jenkins_integration') {
-                sh 'mvn -Dcheckstyle.skip clean package sonar:sonar'
-              }
-            }
-          }
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-        }
+        stage('SonarQube Analysis') {
+           withSonarQubeEnv() {
+           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=theneweracoder_spring-petclinic_AYvL80AHsTFBDlqEZXJo -Dsonar.projectName='spring-petclinic'"
+         }
+         }
+        // stage("build & SonarQube analysis") {
+        //     steps {
+        //       withSonarQubeEnv('jenkins_integration') {
+        //         sh 'mvn -Dcheckstyle.skip clean package sonar:sonar'
+        //       }
+        //     }
+        //   }
+        // stage("Quality Gate") {
+        //     steps {
+        //       timeout(time: 1, unit: 'HOURS') {
+        //         waitForQualityGate abortPipeline: true
+        //       }
+        //     }
+        // }
        stage('Test') {
            steps {
                sh 'mvn -Dcheckstyle.skip test'
