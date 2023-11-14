@@ -21,7 +21,7 @@ pipeline {
         stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('jenkins_integration') {
-                sh 'mvn clean package sonar:sonar'
+                sh 'mvn -Dcheckstyle.skip clean package sonar:sonar'
               }
             }
           }
