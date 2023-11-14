@@ -21,7 +21,7 @@ pipeline {
         stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('jenkins_integration') {
-                sh 'mvn -Dcheckstyle.skip clean package sonar:sonar -Dsonar.host.url=http://172.17.0.2:9000 -Dsonar.login=admin -Dsonar.password=Test@1234'
+                sh 'mvn -Dcheckstyle.skip clean package sonarqube:sonarqube'
               }
             }
           }
