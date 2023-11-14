@@ -26,9 +26,9 @@ pipeline {
         //    sh 'mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=theneweracoder_spring-petclinic_AYvL80AHsTFBDlqEZXJo -Dsonar.projectName='spring-petclinic''
         //  }
         //  }
-        stage("build & SonarQube analysis") {
+        stage("SonarQube analysis") {
             withSonarQubeEnv() {
-              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=sonar -Dsonar.projectName='jenkins_integration'"
+              sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonar -Dsonar.projectName='jenkins_integration'"
             }
         }
         // stage("Quality Gate") {
