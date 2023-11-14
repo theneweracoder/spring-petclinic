@@ -18,14 +18,14 @@ pipeline {
                 sh 'mvn -B -Dcheckstyle.skip -DskipTests clean package'
             }
         }
-        stage('SonarQube Analysis') {
-          tools {
-               jdk "jdk20" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
-          }
-           withSonarQubeEnv('jenkins_integration') {
-           sh 'mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=theneweracoder_spring-petclinic_AYvL80AHsTFBDlqEZXJo -Dsonar.projectName='spring-petclinic''
-         }
-         }
+        // stage('SonarQube Analysis') {
+        //   tools {
+        //        jdk "jdk20" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
+        //   }
+        //    withSonarQubeEnv('jenkins_integration') {
+        //    sh 'mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=theneweracoder_spring-petclinic_AYvL80AHsTFBDlqEZXJo -Dsonar.projectName='spring-petclinic''
+        //  }
+        //  }
         // stage("build & SonarQube analysis") {
         //     steps {
         //       withSonarQubeEnv('jenkins_integration') {
@@ -50,10 +50,10 @@ pipeline {
            //    }
            // }
        }
-//        stage('Deliver') {
-//            steps {
-//                sh './jenkins/scripts/deliver.sh'
-//            }
-//        }
+       stage('Deliver') {
+           steps {
+               sh './deliver.sh'
+           }
+       }
     }
 }
