@@ -48,10 +48,10 @@ pipeline {
            //    }
            // }
        }
-       // stage('Deliver') {
-       //     steps {
-       //         sh './deliver.sh'
-       //     }
-       // }
+       stage('Deploy') {
+           steps {
+               sh 'mvn -Dcheckstyle.skip package'
+           }
+       }
     }
 }
