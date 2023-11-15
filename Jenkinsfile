@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     // agent {
     //     docker {
     //         image 'maven:3.9.0'
@@ -26,11 +27,11 @@ pipeline {
         //    sh 'mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=theneweracoder_spring-petclinic_AYvL80AHsTFBDlqEZXJo -Dsonar.projectName='spring-petclinic''
         //  }
         //  }
-        stage("SonarQube analysis") {
-            withSonarQubeEnv() {
-              sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonar -Dsonar.projectName='jenkins_integration'"
-            }
-        }
+        // stage("SonarQube analysis") {
+        //     withSonarQubeEnv() {
+        //       sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonar -Dsonar.projectName='jenkins_integration'"
+        //     }
+        // }
         // stage("Quality Gate") {
         //     steps {
         //       timeout(time: 1, unit: 'HOURS') {
