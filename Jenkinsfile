@@ -26,11 +26,11 @@ pipeline {
         //    sh 'mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=theneweracoder_spring-petclinic_AYvL80AHsTFBDlqEZXJo -Dsonar.projectName='spring-petclinic''
         //  }
         //  }
-        stage("SonarQube analysis") {
-            withSonarQubeEnv() {
-              sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonar -Dsonar.projectName='jenkins_integration'"
-            }
-        }
+        // stage("SonarQube analysis") {
+        //     withSonarQubeEnv() {
+        //       sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonar -Dsonar.projectName='jenkins_integration'"
+        //     }
+        // }
         // stage("Quality Gate") {
         //     steps {
         //       timeout(time: 1, unit: 'HOURS') {
@@ -48,10 +48,10 @@ pipeline {
            //    }
            // }
        }
-       stage('Deliver') {
-           steps {
-               sh './deliver.sh'
-           }
-       }
+       // stage('Deliver') {
+       //     steps {
+       //         sh './deliver.sh'
+       //     }
+       // }
     }
 }
