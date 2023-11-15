@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools{
-      maven 'maven 3.9.0'
-    }
     // agent {
     //     docker {
     //         image 'maven:3.9.0'
