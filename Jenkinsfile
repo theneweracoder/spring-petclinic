@@ -48,9 +48,9 @@ pipeline {
            //    }
            // }
        }
-       stage('Deploy') {
+       stage('Deliver') {
            steps {
-               sh 'mvn -Dcheckstyle.skip package'
+               sh './deliver.sh'
            }
        }
     }
