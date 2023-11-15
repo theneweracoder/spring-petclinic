@@ -53,9 +53,11 @@ pipeline {
        }
        stage('Deliver') {
            steps {
-               sh 'chmod +x ./deliver.sh'
-               sh 'chmod +x ./target/*.jar'
-               sh './deliver.sh'
+                  sh 'chmod +x ./target/*.jar'
+                  sh 'java -jar ./target/*.jar'
+               // sh 'chmod +x ./deliver.sh'
+               // sh 'chmod +x ./target/*.jar'
+               // sh './deliver.sh'
            }
        }
     }
