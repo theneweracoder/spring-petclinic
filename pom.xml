@@ -34,10 +34,6 @@
     <spring-format.version>0.0.39</spring-format.version>
 
   </properties>
-
-  <build>
-        <finalName>${project.name}-${project.version}</finalName>
-  </build>
   
   <dependencies>
     <!-- Spring and Spring Boot dependencies -->
@@ -281,6 +277,7 @@
       </plugin>
 
     </plugins>
+    <finalName>${project.name}-${project.version}</finalName>
   </build>
 
   <licenses>
