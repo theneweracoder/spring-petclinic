@@ -41,7 +41,7 @@ pipeline {
         //       }
         //     }
         // }
-       stage('Test') {
+       stage("Test") {
            steps {
                sh 'mvn -Dcheckstyle.skip test'
            }
@@ -51,14 +51,19 @@ pipeline {
            //    }
            // }
        }
-       stage('Deploy') {
+       stage("Deploy") {
            steps {
                   sh 'chmod +x ./target/*.jar'
-                  sh 'java -jar -Dserver.port=3000 ./target/*.jar' &
+                  sh 'java -jar -Dserver.port=3000 ./target/*.jar'
                // sh 'chmod +x ./deliver.sh'
                // sh 'chmod +x ./target/*.jar'
                // sh './deliver.sh'
            }
+post {
+    success{
+      sh 'exit 1'
+    }
+}
        }
     }
 }
