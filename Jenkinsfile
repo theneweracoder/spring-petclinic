@@ -28,8 +28,10 @@ pipeline {
         //  }
         //  }
         stage("SonarQube analysis") {
+            steps{
             withSonarQubeEnv("sonarqube") {
               sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonarqube"
+            }
             }
         }
         // stage("Quality Gate") {
