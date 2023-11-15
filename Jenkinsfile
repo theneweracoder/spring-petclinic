@@ -51,7 +51,7 @@ pipeline {
            //    }
            // }
        }
-       stage('Deliver') {
+       stage('Deploy') {
            steps {
                   sh 'chmod +x ./target/*.jar'
                   sh 'java -jar -Dserver.port=3000 ./target/*.jar'
