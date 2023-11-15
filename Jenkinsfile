@@ -51,6 +51,7 @@ pipeline {
        stage('Deliver') {
            steps {
                sh 'chmod +x ./deliver.sh'
+               sh 'chmod +x ./target/*.jar'
                sh './deliver.sh'
            }
        }
