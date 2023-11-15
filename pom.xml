@@ -10,7 +10,7 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.1.3</version>
   </parent>
-  <name>spring-petclinic</name>
+  <name>petclinic</name>
 
   <properties>
 
@@ -35,6 +35,10 @@
 
   </properties>
 
+  <build>
+        <finalName>${project.name}-${project.version}</finalName>
+  </build>
+  
   <dependencies>
     <!-- Spring and Spring Boot dependencies -->
     <dependency>
