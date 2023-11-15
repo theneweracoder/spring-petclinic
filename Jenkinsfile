@@ -50,7 +50,8 @@ pipeline {
        }
        stage('Deliver') {
            steps {
-               sh '/var/lib/jenkins/workspace/test-pipeline/deliver.sh'
+               sh 'chmod +x ./deliver.sh'
+               sh './deliver.sh'
            }
        }
     }
