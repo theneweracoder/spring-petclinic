@@ -28,7 +28,7 @@ pipeline {
         //  }
         //  }
         stage("SonarQube analysis") {
-            withSonarQubeEnv() {
+            withSonarQubeEnv("sonarqube") {
               sh "mvn -Dcheckstyle.skip clean verify sonar:sonar -Dsonar.projectKey=sonarqube"
             }
         }
