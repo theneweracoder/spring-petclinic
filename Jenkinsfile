@@ -35,8 +35,15 @@ pipeline {
        stage("Deploy") {
            steps {
                   sh 'chmod +x ./target/*.jar'
-                  sh 'BUILD_ID=dontKillMe nohup java -jar -Dserver.port=3000 ./target/*.jar &'
+                  echo 'Deployed...'
            }
        }
     }
+post {
+always{
+script{
+sh 'java -jar -Dserver.port=3000 ./target/*.jar'
+}
+}    
+}
 }
