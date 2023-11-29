@@ -35,6 +35,11 @@ pipeline {
                echo 'Test cases passed successfully...'
            }
        }
+       stage("Ansible PlayBook") {
+           steps {
+               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/usr/bin', vaultTmpPath: ''
+           }
+       }
        stage("Deploy") {
            steps {
                   sh 'chmod +x ./target/*.jar'
