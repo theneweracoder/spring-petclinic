@@ -37,7 +37,8 @@ pipeline {
        }
        stage("Ansible PlayBook") {
            steps {
-               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/usr/bin', vaultTmpPath: ''
+//               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/et', vaultTmpPath: ''
+                 sh 'ansible-playbook -i ./hosts deploy.yml'
            }
        }
        stage("Deploy") {
