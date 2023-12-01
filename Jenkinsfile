@@ -22,13 +22,6 @@ pipeline {
             }
             }
         }
-        // stage("Quality Gate") {
-        //     steps {
-        //       timeout(time: 1, unit: 'HOURS') {
-        //         waitForQualityGate abortPipeline: true
-        //       }
-        //     }
-        // }
        stage("Test") {
            steps {
                sh 'mvn -Dcheckstyle.skip test'
@@ -37,7 +30,6 @@ pipeline {
        }
        stage("Ansible PlayBook") {
            steps {
-//               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/et', vaultTmpPath: ''
                  sh 'ansible-playbook /etc/ansible/deploy.yml -i /etc/ansible/hosts -vvv'
            }
        }
@@ -48,11 +40,4 @@ pipeline {
            }
        }
     }
-post {
-always{
-script{
-sh 'java -jar -Dserver.port=3000 ./target/*.jar'
-}
-}    
-}
 }
