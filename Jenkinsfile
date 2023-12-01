@@ -38,7 +38,7 @@ pipeline {
        stage("Ansible PlayBook") {
            steps {
 //               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/et', vaultTmpPath: ''
-                 sh 'ansible-playbook -k -i /etc/ansible/hosts /etc/ansible/deploy.yml -vvv'
+                 sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/deploy.yml -vvv'
            }
        }
        stage("Deploy") {
