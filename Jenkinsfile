@@ -35,7 +35,6 @@ pipeline {
        }
        stage("Deploy") {
            steps {
-                  sh 'chmod +x ./target/*.jar'
                   echo 'Deployed...'
            }
        }
