@@ -38,7 +38,7 @@ pipeline {
        stage("Ansible PlayBook") {
            steps {
 //               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/et', vaultTmpPath: ''
-                 sh 'ansible-playbook /etc/ansible/deploy.yml -i /etc/ansible/hosts -vvv'
+                 sh 'ansible-playbook /etc/ansible/deploy.yml -i /etc/ansible/hosts --private-key /home/azureuser/testssh_key.pem -vvv'
            }
        }
        stage("Deploy") {
