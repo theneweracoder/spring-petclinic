@@ -38,8 +38,8 @@ pipeline {
        stage("Ansible PlayBook") {
            steps {
 //               ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/', playbook: '/et', vaultTmpPath: ''
-                 sh 'sudo chmod +x /home/voraharsh576/.ssh/'
-                 sh 'sudo chmod 0600 /home/voraharsh576/.ssh/id_rsa'
+                 sh 'sudo -i chmod +x /home/voraharsh576/.ssh/'
+                 sh 'sudo -i chmod 0600 /home/voraharsh576/.ssh/id_rsa'
                  sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/deploy.yml -vvv'
            }
        }
